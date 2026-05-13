@@ -1,0 +1,5 @@
+# Declare files that will always have LF line endings on checkout.
+.devcontainer/** eol=lf
+makehdl eol=lf
+Makefile eol=lf
+dependencies.mk eol=lf

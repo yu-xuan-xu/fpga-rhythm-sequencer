@@ -1,0 +1,5 @@
+set_io tm_clock 25
+
+set_io tm_dio 26
+
+set_io tm_strobe 23

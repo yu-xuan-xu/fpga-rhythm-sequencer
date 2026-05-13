@@ -1,0 +1,6 @@
+{
+  "overrideAllArgs": false,
+  "additionalArguments": ["-o", "1048576"],
+  "uartBaudRate": 9600,
+  "uart": true
+}

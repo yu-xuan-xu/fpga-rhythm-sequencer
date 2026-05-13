@@ -1,0 +1,7 @@
+products/
+*.log
+*.vcd 
+*.bin
+**/.DS_Store
+__pycache__/
+sim_build/

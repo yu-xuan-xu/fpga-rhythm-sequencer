@@ -1,0 +1,125 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "FPGA Image Server",
+            "type": "shell",
+            "command": "node server.js ${workspaceFolder}/images",
+            "options": {
+                "cwd": "/opt/fpgaprog",
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "revealProblems": "onProblem",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": true,
+                "clear": true,
+            },
+        },
+        {
+            "label": "Rebuild Tasks",
+            "type": "shell",
+            "command": "${workspaceFolder}/.devcontainer/rebuildTasks",
+            "options": {
+                "cwd": "${workspaceFolder}/.devcontainer",
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "revealProblems": "onProblem",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": true,
+                "clear": true,
+            },
+            "hide": true,
+        },
+        {
+            "label": "100.0 Edit questions.md",
+            "type": "shell",
+            "command": "code ${workspaceFolder}//questions.md",
+        },
+        {
+            "label": "1.01 simple_comb testbench verification",
+            "type": "shell",
+            "command": "${workspaceFolder}/.devcontainer/makehdl products/simple_comb_tb.vcd",
+            "options": {
+                "cwd": "${workspaceFolder}/simple_comb",
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "revealProblems": "onProblem",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": true,
+                "clear": true,
+            },
+            "problemMatcher": {
+                "base": "$vvp",
+                "owner": "simple_comb_tb: testbench",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}/simple_comb",
+                ],
+            },
+        },
+        {
+            "label": "1.02 Edit simple_comb.sv",
+            "type": "shell",
+            "command": "code ${workspaceFolder}/simple_comb/simple_comb.sv",
+        },
+        {
+            "label": "1.03 Simulate simple_comb.sv",
+            "type": "shell",
+            "command": "${workspaceFolder}/.devcontainer/makehdl products/simple_comb.rtl.json",
+            "options": {
+                "cwd": "${workspaceFolder}/simple_comb",
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "revealProblems": "onProblem",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": true,
+                "clear": true,
+            },
+            "problemMatcher": {
+                "base": "$yosys",
+                "owner": "simple_comb: simulate",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}/simple_comb",
+                ],
+            },
+        },
+        {
+            "label": "1.05 ice40 Bitstream",
+            "type": "shell",
+            "command": "${workspaceFolder}/.devcontainer/makehdl products/simple_comb.bin",
+            "options": {
+                "cwd": "${workspaceFolder}/simple_comb",
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "revealProblems": "onProblem",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": true,
+                "clear": true,
+            },
+            "problemMatcher": {
+                "base": "$yosys",
+                "owner": "simple_comb: image",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}/simple_comb",
+                ],
+            },
+        },
+    ],
+}
